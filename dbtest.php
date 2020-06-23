@@ -1,16 +1,16 @@
 <?php
-$dbhost = getenv("MYSQL_PORT_3306_TCP_ADDR");
+$dbhost = getenv("MYSQL_SERVICE_HOST");
 $dbport = getenv("MYSQL_SERVICE_PORT");
 $dbuser = getenv("MYSQL_USER");
 $dbpwd = getenv("MYSQL_PASSWORD");
 $dbname = getenv("MYSQL_DATABASE");
 
-$connection = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
-if ($connection->connect_errno) {
-    printf("No se pudo conectar a la base de datos: %s\n", $mysqli->connect_error);
-    exit();
-} else {
-    printf("Estas conectado a la base de datos %s\n", getenv("MYSQL_DATABASE"));
+try {
+  $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpwd);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Estas conectado a la base de datos " .  getenv("MYSQL_DATABASE");
+  $conn->close();
+} catch(PDOException $e) {
+  echo "No se pudo conectar a la base de datos:: " . $e->getMessage();
 }
-$connection->close();
 ?>

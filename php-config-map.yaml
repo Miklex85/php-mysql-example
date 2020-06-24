@@ -2,14 +2,14 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: php-config-map
-data:   
-   settings:  |-
+data:
+   settings.json:  |-
       {
          "debug": false,
          "App": {
             "namespace": "MyApp"
-      },
+         },
          "Security": {
             "salt": "its-secret"
+         }
       }
-}

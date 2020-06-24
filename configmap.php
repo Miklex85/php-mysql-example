@@ -13,7 +13,7 @@ try {
            if(is_array($val)) {
               echo "<br>$key:";
            } else {
-              echo "<br>$key => $val";
+              echo "<br>$key => " . var_export($val, true);
            }
       }
    } else {

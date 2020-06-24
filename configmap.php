@@ -6,8 +6,10 @@ try {
      $jsonIterator = new RecursiveIteratorIterator(
         new RecursiveArrayIterator(json_decode($jsonConfigMap, TRUE)),
         RecursiveIteratorIterator::SELF_FIRST);
+
+     echo "Configuración Cargada de " . getenv("CONFIG_MAP_PATH");
+
      foreach ($jsonIterator as $key => $val) {
-        echo "Configuración Cargada de " - getenv("CONFIG_MAP_PATH");
            if(is_array($val)) {
               echo "$key:\n";
            } else {
@@ -20,5 +22,7 @@ try {
 } catch(InvalidArgumentException $iae) {
     echo "No hay Configuración Cargada";
 }
+
+  echo "<br><br><a style='color: green' href='index.php'><- Regresar</a> ";
 
 ?>

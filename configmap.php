@@ -11,9 +11,9 @@ try {
 
      foreach ($jsonIterator as $key => $val) {
            if(is_array($val)) {
-              echo "<br>$key:\n";
+              echo "<br>$key:";
            } else {
-              echo "<br>$key => $val\n";
+              echo "<br>$key => $val";
            }
       }
    } else {

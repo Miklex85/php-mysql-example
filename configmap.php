@@ -7,13 +7,13 @@ try {
         new RecursiveArrayIterator(json_decode($jsonConfigMap, TRUE)),
         RecursiveIteratorIterator::SELF_FIRST);
 
-     echo "Configuración Cargada de " . getenv("CONFIG_MAP_PATH");
+     echo "Configuración Cargada de " . getenv("CONFIG_MAP_PATH") . "<br>";
 
      foreach ($jsonIterator as $key => $val) {
            if(is_array($val)) {
-              echo "$key:\n";
+              echo "<br>$key:\n";
            } else {
-              echo "$key => $val\n";
+              echo "<br>$key => $val\n";
            }
       }
    } else {
